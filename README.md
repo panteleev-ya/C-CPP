@@ -1,5 +1,6 @@
-# LabsOnC
-This is two last labs i've done on C language
-* Archiver
-* The Life Game
-### *Made by me in 2019*
+# Projects on C/C++
+Unuversity projects on C
+* [Archiver]()
+* [The Life Game]()  
+My own projects:
+* `[Daemon linux program]()`
