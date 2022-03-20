@@ -3,20 +3,20 @@
 1. private members should be with underscore like ```_point```
 
 
-## File BrokenLine.h
+## "BrokenLine.h"
 
 No
 ```
-explicit BrokenLine(vector<Point<T>> points) {
-    this->points = points;
+explicit BrokenLine(vector<Point<T>> _points) {
+    this->_points = _points;
 }
 BrokenLine(const BrokenLine& obj) {
-    this->points = obj.points;
+    this->_points = obj._points;
 }
 ```
 Yes
 ```
-explicit BrokenLine(vector<Point<T>> points) points(points) {}
+explicit BrokenLine(vector<Point<T>> _points) _points(_points) {}
 BrokenLine(const BrokenLine& obj) point(obj.point) {}
 ```
 
@@ -25,34 +25,34 @@ Type T as a return is questionable
 ```
 T perimeter() {
     T result = static_cast<T>(0);
-    for (size_t i = 1; i < points.size(); i++) {
-        result += pointsDistance(points[i], points[i - 1]);
+    for (size_t i = 1; i < _points.size(); i++) {
+        result += pointsDistance(_points[i], _points[i - 1]);
     }
     return result;
 }
 ```
 
 
-## File Point.h
+## "Point.h"
 
 Not
 ```
-explicit Point(T x, T y) {
-    this->x = x;
-    this->y = y;
+explicit Point(T _x, T _y) {
+    this->_x = _x;
+    this->_y = _y;
 }
 Point(Point const &obj) {
-    this->x = obj.x;
-    this->y = obj.y;
+    this->_x = obj._x;
+    this->_y = obj._y;
 }
 ```
 
 but rather
 
 ```    
-explicit Point(T x, T y) x(x), y(y) {}
+explicit Point(T _x, T _y) _x(_x), _y(_y) {}
 
-Point(Point const &obj) x(obj.x), y(obj.y) {}
+Point(Point const &obj) _x(obj._x), _y(obj._y) {}
 ```
 
 Type T as a return is questionable 
@@ -64,27 +64,27 @@ T pointsDistance(Point<T> p1, Point<T> p2) {
 }
 ```
 
-## File Polygin.h
+## "Polygin.h"
 
 Not
 ```
-explicit Polygon(vector<Point<T>> points) {
-    this->points = points;
+explicit Polygon(vector<Point<T>> _points) {
+    this->_points = _points;
 }
 ```
 But the
 ```
-explicit Polygon(vector<Point<T>> points) point(point) {}
+explicit Polygon(vector<Point<T>> _points) point(point) {}
 ```
 
 Returning type is questionable
 ```
 virtual T perimeter() {
     T result = static_cast<T>(0);
-    for (size_t i = 1; i < points.size(); i++) {
-        result += pointsDistance(points[i], points[i - 1]);
+    for (size_t i = 1; i < _points.size(); i++) {
+        result += pointsDistance(_points[i], _points[i - 1]);
     }
-    result += pointsDistance(points[points.size() - 1], points[0]);
+    result += pointsDistance(_points[_points.size() - 1], _points[0]);
     return result;
 }
 ```
@@ -97,20 +97,20 @@ May be overflow
 
 And area of polygon with integer point are integer or [half-integer](https://en.wikipedia.org/wiki/Half-integer), so double usage is questionable here too (from my point of view)
 
-## File Polynomail.h
+## "Polynomail.h"
 
 All returning types should be ```Polynomial& ```, not ```Polynomial```
 
 Bad
 ```
-explicit Polynomial(vector<T> coefficients) {
-    this->coefficients = coefficients;
+explicit Polynomial(vector<T> _coefficients) {
+    this->_coefficients = _coefficients;
 }
 ```
 
 Good
 ```
-explicit Polynomial(vector<T> coefficients) coefficients(coefficients) {}
+explicit Polynomial(vector<T> _coefficients) _coefficients(_coefficients) {}
 ```
 
 ```
@@ -120,7 +120,7 @@ can looks like this
 
 ```
 Polynomial operator++ () {
-    for (auto &element : coefficients) {
+    for (auto &element : _coefficients) {
         ++element;
     }
     return *this;
@@ -139,19 +139,19 @@ i would implemented like this
 
 ```
 private:
-    Polynomial(size_t size) : coefficients(vector<T>(size, 0)) {}
+    Polynomial(size_t size) : _coefficients(vector<T>(size, 0)) {}
     
 public:
     Polynomial operator+ (const Polynomial &obj) {
-        size_t size_min = std::min(coefficients.size(), obj.coefficients.size());
-        size_t size_max = std::max(coefficients.size(), obj.coefficients.size());
+        size_t size_min = std::min(_coefficients.size(), obj._coefficients.size());
+        size_t size_max = std::max(_coefficients.size(), obj._coefficients.size());
         Polynomial p(size_max);
         
         for (size_t i = 0; i < size_min; ++i) {
-            p.coefficients[i] += coefficients[i] + obj.coefficients[i];
+            p._coefficients[i] += _coefficients[i] + obj._coefficients[i];
         }
         for (size_t = size_min; i < size_max; ++i) {
-            p.coefficients[i] += (size_max == coefficients.size() ? coefficients[i] : obj.coefficients[i]);
+            p._coefficients[i] += (size_max == _coefficients.size() ? _coefficients[i] : obj._coefficients[i]);
         }
         return p
     }
@@ -168,9 +168,9 @@ can be written like
 
 ```
 Polynomial operator* (T number) {
-    Polynomial p(coefficients);
-    for (auto &x : p) {
-        x *= number;
+    Polynomial p(_coefficients);
+    for (auto &_x : p) {
+        _x *= number;
      }
     return p;
 }
@@ -180,11 +180,11 @@ Same applied to
 Polynomial operator/
 ```
 
-## File RegularPolygon.h
+## "RegularPolygon.h"
 
 Constructor should be inherited from ```Polygon``` or am I stupid
 
-## File Trapezoid.h
+## "Trapezoid.h"
 
 Bad constructor
 

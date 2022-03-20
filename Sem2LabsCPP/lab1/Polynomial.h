@@ -18,121 +18,119 @@ template <class T, class=std::enable_if_t<isNumeric<T>>>
 class Polynomial {
 public:
     Polynomial() = default;
-    explicit Polynomial(vector<T> coefficients) {
-        this->coefficients = coefficients;
+    explicit Polynomial(vector<T> coefficients) : _coefficients(coefficients) {
+
     }
     ~Polynomial() {
-        std::destroy(this->coefficients.begin(), this->coefficients.end());
+        std::destroy(this->_coefficients.begin(), this->_coefficients.end());
     }
 
     Polynomial& operator= (const Polynomial& obj) {
-        this->coefficients = obj.coefficients;
+        this->_coefficients = obj._coefficients;
         return *this;
     }
-    Polynomial operator++ () {
-        for (size_t i = 0; i < this->coefficients.size(); i++) {
-            this->coefficients[i] += 1;
+    Polynomial& operator++ () {
+        for (auto& c: _coefficients) {
+            c++;
         }
         return *this;
     }
-    Polynomial operator-- () {
-        for (size_t i = 0; i < this->coefficients.size(); i++) {
-            this->coefficients[i] -= 1;
+    Polynomial& operator-- () {
+        for (auto& c: _coefficients) {
+            c--;
         }
         return *this;
     }
-    Polynomial operator+ (const Polynomial &obj) {
-        Polynomial p(this->coefficients);
+    Polynomial operator+ (const Polynomial &obj) const {
+        Polynomial p(this->_coefficients);
 
-        size_t size = std::min(p.coefficients.size(), obj.coefficients.size());
-        size_t i = 0;
-        for (; i < size; i++) {
-            p.coefficients[i] += obj.coefficients[i];
+        size_t min_size = std::min(_coefficients.size(), obj.coefficients.size());
+        size_t obj_size = obj.coefficients.size();
+        for (size_t i = 0; i < min_size; i++) {
+            p._coefficients[i] += obj._coefficients[i];
         }
-        while (i < obj.coefficients.size()) {
-            p.coefficients.push_back(obj.coefficients[i]);
-            i++;
+        for (size_t i = min_size; i < obj_size; i++) {
+            p._coefficients.push_back(obj._coefficients[i]);
         }
         return p;
     }
-    Polynomial operator- (const Polynomial &obj) {
-        Polynomial p(this->coefficients);
+    Polynomial operator- (const Polynomial &obj) const {
+        Polynomial p(this->_coefficients);
 
-        size_t size = std::min(p.coefficients.size(), obj.coefficients.size());
-        size_t i = 0;
-        for (; i < size; i++) {
-            p.coefficients[i] -= obj.coefficients[i];
+        size_t min_size = std::min(_coefficients.size(), obj.coefficients.size());
+        size_t obj_size = obj.coefficients.size();
+        for (size_t i = 0; i < min_size; i++) {
+            p._coefficients[i] -= obj._coefficients[i];
         }
-        while (i < obj.coefficients.size()) {
-            p.coefficients.push_back(-obj.coefficients[i]);
-            i++;
+        for (size_t i = min_size; i < obj_size; i++) {
+            p._coefficients.push_back(-obj._coefficients[i]);
         }
         return p;
     }
-    Polynomial operator+= (const Polynomial &obj) {
+    Polynomial& operator+= (const Polynomial &obj) {
         *this = *this + obj;
         return *this;
     }
-    Polynomial operator-= (const Polynomial &obj) {
+    Polynomial& operator-= (const Polynomial &obj) {
         *this = *this - obj;
         return *this;
     }
-    Polynomial operator* (T number) {
-        Polynomial p(this->coefficients);
-        for (size_t i = 0; i < p.coefficients.size(); i++) {
-            p.coefficients[i] *= number;
+    Polynomial operator* (T number) const {
+        Polynomial p(this->_coefficients);
+        for (auto& c: _coefficients) {
+            c *= number;
         }
         return p;
     }
-    Polynomial operator/ (T number) {
-        Polynomial p(this->coefficients);
-        for (size_t i = 0; i < p.coefficients.size(); i++) {
-            p.coefficients[i] /= number;
+    Polynomial operator/ (T number) const {
+        Polynomial p(this->_coefficients);
+        for (auto& c: _coefficients) {
+            c /= number;
         }
         return p;
     }
-    Polynomial operator*= (T number) {
+    Polynomial& operator*= (T number) const {
         *this = *this * number;
         return *this;
     }
-    Polynomial operator/= (T number) {
+    Polynomial& operator/= (T number) const {
         *this = *this / number;
         return *this;
     }
-    bool operator== (Polynomial obj) {
-        if (this->coefficients.size() != obj.coefficients.size()) {
+    bool operator== (Polynomial obj) const {
+        if (this->_coefficients.size() != obj._coefficients.size()) {
             return false;
         }
-        for (size_t i = 0; i < this->coefficients.size(); i++) {
-            if (this->coefficients[i] != obj.coefficients[i]) {
+        for (size_t i = 0; i < this->_coefficients.size(); i++) {
+            if (this->_coefficients[i] != obj._coefficients[i]) {
                 return false;
             }
         }
         return true;
     }
-    bool operator!= (const Polynomial &obj) {
+    bool operator!= (const Polynomial &obj) const {
         return !(*this == obj);
     }
-    std::ostream& operator<< (std::ostream &out) {
-        for (T c : this->coefficients) {
+    std::ostream& operator<< (std::ostream &out) const {
+        for (T c : this->_coefficients) {
             out << c << ' ';
         }
         return out;
     }
-    std::ostream& operator>> (std::ostream &in) {
-        for (size_t i = 0; i < this->coefficients.size(); i++) {
-            in >> this->coefficients[i];
+    std::ostream& operator>> (std::ostream &in) const {
+        for (size_t i = 0; i < this->_coefficients.size(); i++) {
+            in >> this->_coefficients[i];
         }
         return in;
     }
-    T operator[] (size_t index) {
-        if (this->coefficients.size() == 0) {
+    T operator[] (size_t index) const {
+        if (this->_coefficients.size() == 0) {
             return static_cast<T>(0);
         }
-        return this->coefficients[index % this->coefficients.size()];
+        return this->_coefficients[index % this->_coefficients.size()];
     }
 private:
-    vector<T> coefficients;
+    vector<T> _coefficients;
 };
 
 

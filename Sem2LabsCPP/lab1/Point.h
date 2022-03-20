@@ -16,28 +16,35 @@ class Point {
 public:
     Point() = default;
     explicit Point(T x, T y) {
-        this->x = x;
-        this->y = y;
+        this->_x = x;
+        this->_y = y;
     }
     Point(Point const &obj) {
-        this->x = obj.x;
-        this->y = obj.y;
+        this->_x = obj.getX();
+        this->_y = obj.getY();
     }
-    T getX() {
-        return x;
+    T getX() const {
+        return _x;
     }
-    T getY() {
-        return y;
+    T getY() const {
+        return _y;
+    }
+
+    Point operator-(const Point& obj) const {
+        T x = this->_x - obj.getX();
+        T y = this->_y - obj.getY();
+        Point p(x, y);
+        return p;
     }
 private:
-    T x = 0;
-    T y = 0;
+    T _x = 0;
+    T _y = 0;
 };
 
 template <class T, class=std::enable_if_t<isNumeric<T>>>
-T pointsDistance(Point<T> p1, Point<T> p2) {
-    T xLen = p2.getX() - p1.getX();
-    T yLen = p2.getY() - p1.getY();
+double pointsDistance(Point<T> p1, Point<T> p2) {
+    double xLen = p2.getX() - p1.getX();
+    double yLen = p2.getY() - p1.getY();
     return sqrt(static_cast<double>(xLen * xLen + yLen * yLen));
 }
 
