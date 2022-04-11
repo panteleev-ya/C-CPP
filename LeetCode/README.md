@@ -1,0 +1,27 @@
+# Задачки с LeetCode, а решения на C++
+### Easy
+1. [Neformals](https://github.com/SmartOven/RandomTasks/tree/master/Neformals) (codeforces.com)
+2. [Single Number](https://github.com/SmartOven/RandomTasks/tree/master/SingleNumber)
+3. [Happy Number](https://github.com/SmartOven/RandomTasks/tree/master/HappyNumber)
+4. [Maximum Subarray](https://github.com/SmartOven/RandomTasks/tree/master/MaximumSubarray)
+5. [Move Zeroes](https://github.com/SmartOven/RandomTasks/tree/master/MovingZeroes)
+6. [Counting Elements](https://github.com/SmartOven/RandomTasks/tree/master/CountingElements)
+7. [Middle of the Linked List](https://github.com/SmartOven/RandomTasks/tree/master/MiddleOfList)
+8. [Backspace String Compare](https://github.com/SmartOven/RandomTasks/tree/master/StringCompare)
+9. [Min Stack](https://github.com/SmartOven/RandomTasks/tree/master/MinStack)
+10. [Diameter of Binary Tree](https://github.com/SmartOven/RandomTasks/tree/master/DiameterOfBinaryTree)
+11. [Last Stone Weight](https://github.com/SmartOven/RandomTasks/tree/master/LastStoneWeight)
+12. [Perform String Shifts](https://github.com/SmartOven/RandomTasks/tree/master/PerformStringShifts)
+13. [Merge Two Sorted Lists](https://github.com/SmartOven/RandomTasks/tree/master/MergeTwoSortedLists)
+
+### Medium
+1. [3Sum](https://github.com/SmartOven/RandomTasks/tree/master/Threeplets)
+2. [Contiguous Array](https://github.com/SmartOven/RandomTasks/tree/master/ContiguousArray)
+3. [Best Time to Buy and Sell Stock II](https://github.com/SmartOven/RandomTasks/tree/master/BestTimeToBuyAndSellStockII)
+4. [Group Anagrams](https://github.com/SmartOven/RandomTasks/tree/master/Anagrams)
+5. [Product of Array Except Self](https://github.com/SmartOven/RandomTasks/tree/master/ProductOfArrayExceptSelf)
+6. [Valid Parenthesis String](https://github.com/SmartOven/RandomTasks/tree/master/ValidParenthesisString)
+7. [Number of Islands](https://github.com/SmartOven/RandomTasks/tree/master/NumberOfIslands)
+8. [Minimum Path Sum](https://github.com/SmartOven/RandomTasks/tree/master/MinimumPathSum)
+9. [Search in Rotated Sorted Array](https://github.com/SmartOven/RandomTasks/tree/master/SearchInRotatedSortedArray)
+10. [Construct Binary Search Tree from Preorder Traversal](https://github.com/SmartOven/RandomTasks/tree/master/ConstructBinarySearchTree)
