@@ -1,3 +1,0 @@
-D:/DiskApps/Programming/GitRepos/C-Projects/Sem2LabsCPP/cmake-build-debug/CMakeFiles/clion.dir
-D:/DiskApps/Programming/GitRepos/C-Projects/Sem2LabsCPP/cmake-build-debug/CMakeFiles/edit_cache.dir
-D:/DiskApps/Programming/GitRepos/C-Projects/Sem2LabsCPP/cmake-build-debug/CMakeFiles/rebuild_cache.dir
