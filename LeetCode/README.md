@@ -1,4 +1,6 @@
 # Задачки с LeetCode, а решения на C++
+### Не LeetCode
+[Ссылка](https://github.com/SmartOven/C-CPP/tree/master/LeetCode/OtherTasks)
 ### Easy
 1. [Neformals](https://github.com/SmartOven/C-CPP/tree/master/LeetCode/Neformals) (codeforces.com)
 2. [Single Number](https://github.com/SmartOven/C-CPP/tree/master/LeetCode/SingleNumber)
